@@ -9,12 +9,9 @@ import java.util.Scanner;
 public class Parser {
 
 	private String path;
-	private List<String> tipoClase;
-	private List<String> palabraReservada;
 	private List<String> estructuraControl;
 	private List<String> operadores;
 	private List<String> comentarios;
-	private List<String> metodos;
 
 	public Parser(String path) {
 		this.path = path;
@@ -22,35 +19,7 @@ public class Parser {
 	}
 
 	private void setLists() {
-		tipoClase = new ArrayList<>();
-		tipoClase.add("class");
-		tipoClase.add("interface");
-
-		palabraReservada = new ArrayList<>();
-		palabraReservada.add("public");
-		palabraReservada.add("private");
-		palabraReservada.add("protected");
-		palabraReservada.add("static");
-		palabraReservada.add("final");
-		palabraReservada.add("void");
-		palabraReservada.add("List");
-		palabraReservada.add("ArrayList");
-		palabraReservada.add("set");
-		palabraReservada.add("HashSet");
-		palabraReservada.add("Map");
-		palabraReservada.add("HashMap");
-		palabraReservada.add("String");
-		palabraReservada.add("int");
-		palabraReservada.add("Integer");
-		palabraReservada.add("float");
-		palabraReservada.add("double");
-		palabraReservada.add("boolean");
-		palabraReservada.add("Boolean");
-		palabraReservada.add("try");
-
 		
-
-
 		estructuraControl = new ArrayList<>();
 		estructuraControl.add("if");
 		estructuraControl.add("else");
@@ -78,8 +47,8 @@ public class Parser {
 		operadores.add("--");
 		operadores.add("+=");
 		operadores.add("-=");
-		operadores.add("<");
-		operadores.add(">");
+//		operadores.add("<");
+//		operadores.add(">");
 		operadores.add("<=");
 		operadores.add(">=");
 		operadores.add("!");
@@ -88,15 +57,7 @@ public class Parser {
 		operadores.add(">=");
 		operadores.add(">=");
 		operadores.add("@");
-		
 
-		metodos = new ArrayList<>();
-		metodos.add(".add(");
-		metodos.add(".contains(");
-		metodos.add(".trim(");
-		metodos.add(".remove(");
-		metodos.add(".addAll(");
-		metodos.add(".charAt(");
 	}
 
 	public List<String> getMetodos() {

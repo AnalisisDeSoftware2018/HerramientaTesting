@@ -223,13 +223,12 @@ public class HerramientaTestingInterfaz extends JFrame {
 		lbVolumen.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lbVolumen.setBounds(-11, 155, 254, 14);
 		panelAnalisis.add(lbVolumen);
-		// ANALISIS //
 		
 		btnBuscar.addActionListener(e->openChooserFile());
 	}
 
 	private void cargarReporte(String codigo) {
-		Analisis a = new Analisis(codigo, listaMetodos, clasesMap.values());
+		Analisis a = new Analisis(codigo, clasesMap.get(listaClases.getSelectedValue()), clasesMap.values());
 		lbLineasTotales.setText(String.valueOf(a.getLineasMetodo()));
 		lbComentarios.setText(String.valueOf(a.getLineasComentadas()));
 		lbPorcentaje.setText(a.getPorcentajeLineasComentadas());
@@ -301,18 +300,6 @@ public class HerramientaTestingInterfaz extends JFrame {
 				return values[index];
 			}
 		});
-	}
-	
-	public void setTxfPath(String path) {
-		this.txfPath.setText(path);
-		Parser parser= new Parser(path);
-		for(String metodo: parser.getMetodos()) {
-//			comboBox.addItem(metodo);
-			System.out.println("------------------");
-			textAreaMetodo.setText(parser.codigoMetodo(metodo));
-			System.out.println(parser.codigoMetodo(metodo));
-		}
-		System.out.println(txfPath.getText());
 	}
 	
 	private String[] mapToArray(Map<String, String> map) {

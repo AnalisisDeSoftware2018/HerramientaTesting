@@ -3,8 +3,6 @@ package modelo;
 import java.text.DecimalFormat;
 import java.util.Collection;
 
-import javax.swing.JList;
-
 public class Analisis {
 	private String codigo;
 	private int lineasMetodo;
@@ -15,7 +13,24 @@ public class Analisis {
 	private float longHalstead;
 	private float volHalstead;
 	
+	public Analisis(String codigo,String archivoSeleccionado,Collection<String> listaArchivos) {
+		this.codigo = codigo;
+		actualizarDatosAnalisis(listaArchivos,archivoSeleccionado);
+	}
 
+	private void actualizarDatosAnalisis( Collection<String> listaArchivos, String archivoSeleccionado){
+		LineaCodigo lineaCodigo = new LineaCodigo(codigo);
+		lineasMetodo = lineaCodigo.getLineas();
+		lineasComentadas = lineaCodigo.getLineasComentadas();
+		complejidad = ComplejidadCiclomatica.obtener(codigo);
+		fanIn = FanInOut.getFanIn(codigo, listaArchivos); 
+		fanOut = FanInOut.getFanOut(codigo,archivoSeleccionado, listaArchivos);
+		
+		Halstead h = new Halstead(codigo);
+		longHalstead = h.getLongitud();
+		volHalstead = h.getVolumen();
+	}
+	
 	public int getLineasMetodo() {
 		return lineasMetodo;
 	}
@@ -42,22 +57,5 @@ public class Analisis {
 		return volHalstead;
 	}
 
-	public Analisis(String codigo, JList<String> listaMetodos, Collection<String> listaArchivos) {
-		super();
-		this.codigo = codigo;
-		actualizarDatosAnalisis(listaMetodos, listaArchivos);
-	}
 
-	private void actualizarDatosAnalisis(JList<String> listaMetodos, Collection<String>listaArchivos){
-		LineaCodigo lineaCodigo = new LineaCodigo(codigo);
-		lineasMetodo = lineaCodigo.getLineas();
-		lineasComentadas = lineaCodigo.getLineasComentadas();
-		complejidad = ComplejidadCiclomatica.obtener(codigo);
-//		fanIn = FanInOut.getFanIn(codigo, listaMetodos); 
-//		fanOut = FanInOut.getFanOut(codigo, listaMetodos, listaArchivos);
-		
-//		Halstead h = new Halstead(codigo); // falta
-//		longHalstead = h.getLongitud();
-//		volHalstead = h.getVolumen();
-	}
 }

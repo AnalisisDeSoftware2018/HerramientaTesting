@@ -31,11 +31,13 @@ public class LineaCodigo {
 				if (linea.contains("*/")) {
 					lineasComentadas++;
 				} else {
-					while (sc.hasNextLine()) {
+					lineasComentadas++;
+					while (sc.hasNextLine()) {//lineasComentadas++;
 						lineas++;
+						lineasComentadas++;
 						linea = sc.nextLine();
 						if(linea.contains("*/")) {
-							lineasComentadas++;
+							break;
 						}
 					}
 				}
