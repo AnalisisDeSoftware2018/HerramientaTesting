@@ -64,7 +64,7 @@ public class HerramientaTestingInterfaz extends JFrame {
 	 * Create the frame.
 	 */
 	public HerramientaTestingInterfaz() {
-		setTitle("Herramienta de testing");
+		setTitle("Herramienta de Testing - Grupo 1");
 		setResizable(Boolean.FALSE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 700);

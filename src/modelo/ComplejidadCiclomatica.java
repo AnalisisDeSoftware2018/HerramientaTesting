@@ -3,7 +3,7 @@ package modelo;
 public class ComplejidadCiclomatica {
 
 	public static int obtener(String codigo) {
-		int c = 1;
+		int c = 0;
 		String[] lineas = codigo.split("\\n");
 		for (int i = 0; i < lineas.length; i++) {
 			c += (Parser.ocurrenciasPorLinea(lineas[i], "&&") + Parser.ocurrenciasPorLinea(lineas[i], "||"));
